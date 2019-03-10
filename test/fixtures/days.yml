@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  teacher_name: MyString
+  clock_in_time: MyString
+  clock_out_time: MyString
+  time_worked: MyString
+
+two:
+  teacher_name: MyString
+  clock_in_time: MyString
+  clock_out_time: MyString
+  time_worked: MyString
