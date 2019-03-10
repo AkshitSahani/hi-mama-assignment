@@ -13,19 +13,17 @@ class Home extends Component {
 
   render(){
     return (
-      <div >
-        <div className="header">
+      <div style={{display: 'flex', flexDirection: 'column', flex: 1}}>
+        <div className="header main">
 
-          <h4>
-            Test
-          </h4>
+          <img src="https://s3.amazonaws.com/himama2/images/horizontal-logo.png"/>
 
           <h1>
             Welcome to HiMama!
           </h1>
 
           <button onClick={this.onClick}>
-            See All Data
+            {this.state.screen === 'form' ? "See All Data" : "Back to Clock"}
           </button>
         </div>
 

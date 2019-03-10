@@ -8,7 +8,7 @@ module Api
     end
 
     def create
-      @last_day = Day.where(teacher_name: params[:teacher_name]).last
+      @last_day = Day.where(teacher_name: params[:teacher_name].downcase).last
       # binding.pry
       if !@last_day || (@last_day && @last_day.clock_out_time)
         # binding.pry
@@ -22,7 +22,8 @@ module Api
         end
       else
         # binding.pry
-        render json: {message: "Oops! Sorry #{@last_day.teacher_name}, you cannot clock in again before clocking out first."}, status: :unprocessable_entity
+        formatted_name = @last_day.teacher_name.split.map {|name| name.capitalize}.join(' ')
+        render json: {message: "Oops! Sorry #{formatted_name}, you cannot clock in again before clocking out first."}, status: :unprocessable_entity
       end
     end
 
@@ -30,7 +31,7 @@ module Api
       if params[:teacher_name] == ''
         return render json: {message: 'Teacher name cannot be blank!'}, status: :unprocessable_entity
       end
-      @day = Day.where(teacher_name: params[:teacher_name]).last
+      @day = Day.where(teacher_name: params[:teacher_name].downcase).last
       # binding.pry
       if @day && @day.clock_in_time && !@day.clock_out_time
         @time_worked = params[:time].to_i - @day.clock_in_time.to_i
@@ -39,7 +40,8 @@ module Api
       # if @day.save
         render json: {data: @day, message: 'Clock out time registered successfully!'}, status: :ok
       else
-        render json: {message: "Oops! Sorry #{params[:teacher_name]}, you cannot clock out before clocking in first."}, status: :unprocessable_entity
+        formatted_name = params[:teacher_name].split.map {|name| name.capitalize}.join(' ')
+        render json: {message: "Oops! Sorry #{formatted_name}, you cannot clock out before clocking in first."}, status: :unprocessable_entity
       end
     end
 

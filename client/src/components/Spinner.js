@@ -1,5 +1,5 @@
 import React from 'react';
-import { ClipLoader } from 'react-spinners';
+import { FadeLoader } from 'react-spinners';
 
 const Spinner = (props) => {
   return (
@@ -7,10 +7,10 @@ const Spinner = (props) => {
         className="spinner"
         // style={{height: this.props.height, width: this.props.width, zIndex: (this.props.loading ? 5 : -5)}}
     >
-      <ClipLoader
+      <FadeLoader
         sizeUnit={"px"}
-        size={40}
-        color={'#000000'}
+        size={50}
+        color={'#ffffff'}
         loading={props.loading}
       />
     </div>

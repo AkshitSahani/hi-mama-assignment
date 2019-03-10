@@ -14,7 +14,7 @@ class ClockList extends Component {
       const url = '/api/clockdata';
       const response = await axios.get(url);
       console.log('resp from get clocks', response);
-      this.setState({clocks: response.data.data, loading: false});
+      this.setState({clocks: response.data.data, });
     }
     catch(e){
       console.log('e in getting clocks', e);
@@ -56,7 +56,7 @@ class ClockList extends Component {
 
   render(){
     return (
-      <div>
+      <div style={{width: '100%', height: 500}}>
         <h1>
           Welcome to the Clock List!!!
         </h1>

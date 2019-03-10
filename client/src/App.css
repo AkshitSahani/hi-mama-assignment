@@ -1,7 +1,9 @@
 .App {
   text-align: center;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   padding: 3%;
+  background-color: #34b9c6;
+  color: white;
 }
 
 .App-logo {
@@ -27,6 +29,12 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
+}
+
+.main{
+  background-color: white;
+  color: #34b9c6;
 }
 
 .clock-type {
@@ -41,4 +49,19 @@
 .success{
   color: green;
   text-align: center;
+}
+
+.spinner{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0px;
+  /* border: 2px solid red; */
+}
+
+.clocks-container{
+  display: flex;
+  flex:1;
+  flex-direction: column;
 }
