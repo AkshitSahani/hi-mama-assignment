@@ -30,6 +30,8 @@ module Api
     def update
       if params[:teacher_name] == ''
         return render json: {message: 'Teacher name cannot be blank!'}, status: :unprocessable_entity
+      elsif params[:teacher_name].length > 30
+        return render json: {message: 'Teacher name cannot be longer than 30 characters!'}, status: :unprocessable_entity
       end
       @day = Day.where(teacher_name: params[:teacher_name].downcase).last
       # binding.pry

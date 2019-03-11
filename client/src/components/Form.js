@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import moment from 'moment';
 import Clock from './Clock';
 
 class Form extends Component {
@@ -18,11 +17,13 @@ class Form extends Component {
       const url = type === 'out' ? '/api/clockout' : '/api/clockin';
       const method = type === 'out' ? 'PUT' : 'POST';
       const {teacher} = this.state;
+      if(!teacher){
+        return this.setState({error: 'Teacher name cannot be blank!'});
+      }
       const data = {teacher_name: teacher.trim(), time: Date.now().toString()}
-      // console.log('data before post', data, 'moment conversion', moment(1552169020918)._d);
       const response = await axios({method, url, data});
       console.log('resp from submit clock', response);
-      this.setState({loading: false, successMessage: `Thanks ${this.props.capitalize(teacher.trim())}! ${response.data.message}`});
+      this.setState({loading: false, successMessage: `Thanks ${this.props.capitalize(teacher.trim())}! ${response.data.message}`, teacher: ''});
       setTimeout(() => this.setState({successMessage: ''}), 2000);
     }
     catch(e){
@@ -49,7 +50,7 @@ class Form extends Component {
         </p>
 
         <p className="form-text">
-          Please tell us your name:
+          Please tell us your full name:
         </p>
 
         <input

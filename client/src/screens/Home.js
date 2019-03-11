@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import ClockList from '../components/ClockList';
 import Form from '../components/Form';
-import Clock from '../components/Clock';
 
 class Home extends Component {
 
@@ -33,6 +31,7 @@ class Home extends Component {
             <img
               src={`https://s3.amazonaws.com/himama2/${this.state.changeLogo ? 'logos/train-square' : 'images/horizontal-logo'}.png`}
               height={48}
+              alt="logo"
             />
           </a>
 
