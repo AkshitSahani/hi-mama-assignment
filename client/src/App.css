@@ -1,26 +1,31 @@
 .App {
+  display: flex;
+  flex: 1;
   text-align: center;
+  justify-content: space-between;
+  flex-direction: column;
   /* border: 2px solid black; */
-  padding: 3%;
-  background-color: #34b9c6;
-  color: white;
+  /* padding: 3%; */
+  /* background-color: #34b9c6; */
+  color: #34b9c6;
+  font-family: 'Bree Serif', Georgia, Times, serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.home{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex: 1;
+}
+
+.form{
+  background-color: #34b9c6;
   color: white;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px 20px;
 }
 
 .header {
@@ -28,29 +33,44 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-
+  /* width: 100%; */
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .main{
-  background-color: white;
+  /* background-color: white; */
   color: #34b9c6;
+  /* position: fixed; */
+}
+
+.main-alt{
+  color: white;
+  background-color: #34b9c6;
 }
 
 .clock-type {
-  width: 30%;
+  width: 25%;
 }
 
 .error{
-  color: red;
+  color: #feed7f;
+  /* font-weight: bold; */
   text-align: center;
+  font-size: 17px;
+  /* margin-top: 30px; */
+  /* margin-bottom: 0px; */
 }
 
 .success{
-  color: green;
+  color: #6a55a1;
+  /* font-weight: bold; */
   text-align: center;
+  font-size: 17px;
+  /* margin-top: 30px; */
+  /* margin-bottom: 0px; */
 }
-
+/* 3d9644 */
 .spinner{
   display: flex;
   flex: 1;
@@ -64,4 +84,149 @@
   display: flex;
   flex:1;
   flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.Clock {
+  padding: 5px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input {
+  color: grey;
+  font-size: 18px;
+  font-family: 'Bree Serif', Georgia, Times, serif;
+  /* border-radius: 5px; */
+  padding-left: 10px;
+}
+
+.button {
+  padding: 15px;
+  color: #34b9c6;
+  border: 2px solid #34b9c6;
+  background-color: white;
+  border-radius: 6px;
+  font-family: 'Bree Serif', Georgia, Times, serif;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.button:hover{
+  color: #108790;
+}
+
+.alt {
+  color: white;
+  background-color: #34b9c6;
+}
+
+.alt:hover{
+  /* color: white; */
+  /* background-color: #108790; */
+  /* border: 1px solid #108790; */
+  color: #34b9c6;
+  background-color: white;
+  border: 2px solid #34b9c6;
+}
+
+.main-title{
+  font-size: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.form-text{
+  font-size: 22px;
+}
+
+.form-text:last-of-type{
+  margin-top: 3%;
+}
+
+.clock-event{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 18px;
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
+}
+
+.name{
+  width: 25%;
+  align-items: flex-start;
+}
+
+.type{
+  width: 25%;
+}
+
+.time{
+  width: 25%;
+  align-items: flex-end;
+  /* align-items: flex-end; */
+}
+
+.bold{
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.events-container{
+  width: 100%;
+  background-color: white;
+  color: #34b9c6;
+  /* background-color: #34b9c6; */
+  /* color: white; */
+}
+
+.desc{
+  font-size: 25px;
+  padding: 0px 10px;
+}
+
+@media (min-width: 851px) and (max-width: 1020px){
+  .clock-type{
+    width: 35%;
+  }
+}
+
+@media(max-width: 850px){
+  .clock-type{
+    width: 40%;
+  }
+}
+
+@media(max-width: 670px){
+  .clock-type{
+    width: 50%;
+  }
+}
+
+@media(max-width: 520px){
+  .clock-type{
+    width: 70%;
+  }
+}
+
+@media(max-width: 390px){
+  .clock-type{
+    width: 80%;
+  }
+}
+
+@media (max-width: 810px) {
+  .main-title{
+    display: none;
+  }
+  .main{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }

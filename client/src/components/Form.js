@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import Clock from './Clock';
 
 class Form extends Component {
 
   state = {
     teacher: '',
-
   }
 
   onChange = (event) => this.setState({teacher: event.target.value});
+
 
   onClick = async(type) => {
     this.setState({error: ''});
@@ -17,11 +18,11 @@ class Form extends Component {
       const url = type === 'out' ? '/api/clockout' : '/api/clockin';
       const method = type === 'out' ? 'PUT' : 'POST';
       const {teacher} = this.state;
-      const data = {teacher_name: this.state.teacher, time: Date.now().toString()}
-      console.log('data before post', data, 'moment conversion', moment(1552169020918)._d);
+      const data = {teacher_name: teacher.trim(), time: Date.now().toString()}
+      // console.log('data before post', data, 'moment conversion', moment(1552169020918)._d);
       const response = await axios({method, url, data});
       console.log('resp from submit clock', response);
-      this.setState({loading: false, successMessage: `Thanks ${teacher}! ${response.data.message}`});
+      this.setState({loading: false, successMessage: `Thanks ${this.props.capitalize(teacher.trim())}! ${response.data.message}`});
       setTimeout(() => this.setState({successMessage: ''}), 2000);
     }
     catch(e){
@@ -35,13 +36,20 @@ class Form extends Component {
     const {error, successMessage} = this.state;
 
     return (
-      <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', }}>
-        <h3>
-          Welcome to the form!!!
-        </h3>
+      <div className="form">
 
-        <p>
-          Please tell us your name
+        <h1>
+          Welcome to the HiMama Clocker
+        </h1>
+
+        <Clock />
+
+        <p className="desc">
+          Teachers, please clock in when you arrive, and clock out when you leave
+        </p>
+
+        <p className="form-text">
+          Please tell us your name:
         </p>
 
         <input
@@ -50,18 +58,25 @@ class Form extends Component {
           required
           value={this.state.teacher}
           onChange={this.onChange}
+          className="input"
         />
 
-        <p>
+        <p className="form-text">
           What would you like to do?
         </p>
 
         <div className="header clock-type">
-          <button onClick={this.onClick}>
+          <button
+            onClick={this.onClick}
+            className="button"
+          >
             Clock In
           </button>
 
-          <button onClick={() => this.onClick('out')}>
+          <button
+            onClick={() => this.onClick('out')}
+            className="button"
+          >
             Clock Out
           </button>
         </div>

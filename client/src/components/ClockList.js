@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Spinner from './Spinner';
-import Clock from './Clock';
+import ClockEvent from './ClockEvent';
 
 class ClockList extends Component {
 
@@ -25,21 +25,24 @@ class ClockList extends Component {
 
   renderClocks = () => {
     if(this.state.clocks.length){
-      return this.state.clocks.map((c) => {
-        // const clockData = [];
+      return this.state.clocks.map((c, index) => {
 
         return (
           [
-            <Clock
-              teacherName={c.teacher_name}
+            <ClockEvent
+              teacherName={this.props.capitalize(c.teacher_name)}
+              color={'#108790'}
               type={'In'}
               time={c.clock_in_time}
+              key={c.clock_in_time + index}
             />,
             c.clock_out_time ?
-              <Clock
-                teacherName={c.teacher_name}
+              <ClockEvent
+                teacherName={this.props.capitalize(c.teacher_name)}
+                color={'#6a55a1'}
                 type={"Out"}
                 time={c.clock_out_time}
+                key={c.clock_out_time + index}
               />
             :
             null
@@ -56,21 +59,22 @@ class ClockList extends Component {
 
   render(){
     return (
-      <div style={{width: '100%', height: 500}}>
-        <h1>
-          Welcome to the Clock List!!!
+      <div className="events-container">
+
+        <h1 style={{marginBottom: 40}}>
+          View all clock events
         </h1>
 
-        <div className="header">
-          <span>
+        <div className="header bold">
+          <span className="list name">
             Teacher Name
           </span>
 
-          <span>
-            Clock Event type
+          <span className="list type">
+            Clock Type
           </span>
 
-          <span>
+          <span className="list time">
             Time
           </span>
         </div>

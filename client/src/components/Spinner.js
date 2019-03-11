@@ -3,14 +3,11 @@ import { FadeLoader } from 'react-spinners';
 
 const Spinner = (props) => {
   return (
-    <div
-        className="spinner"
-        // style={{height: this.props.height, width: this.props.width, zIndex: (this.props.loading ? 5 : -5)}}
-    >
+    <div className="spinner">
       <FadeLoader
         sizeUnit={"px"}
         size={50}
-        color={'#ffffff'}
+        color={'#34b9c6'}
         loading={props.loading}
       />
     </div>
